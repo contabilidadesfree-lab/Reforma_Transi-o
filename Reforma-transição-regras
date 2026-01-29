@@ -1,0 +1,105 @@
+{
+  "api": "transicao_reforma",
+
+  "descricao": "Regras gerais da transição da Reforma Tributária brasileira, considerando a convivência entre tributos antigos e novos no período de 2027 a 2033, aplicadas sob a ótica da regra geral, sem exceções específicas por empresa",
+
+  "escopo": {
+    "considera_beneficios_fiscais_especificos": false,
+    "descricao": "Este conjunto de regras considera exclusivamente a legislação geral aplicável à maioria das empresas, sem tratamento de regimes especiais, incentivos regionais ou exceções setoriais"
+  },
+
+  "pis_cofins": {
+    "ativo_ate": 2026,
+    "extinto_a_partir_de": 2027,
+    "substituido_por": "CBS"
+  },
+
+  "cbs": {
+    "inicio_vigencia": 2027,
+    "percentual_implantacao_por_ano": {
+      "2027": 0.10,
+      "2028": 0.20,
+      "2029": 0.30,
+      "2030": 0.40,
+      "2031": 0.50,
+      "2032": 0.60,
+      "2033": 1.00
+    },
+    "apuracao": "mensal",
+    "observacao": "Este arquivo define apenas o percentual de implantação da CBS. A alíquota nominal é tratada em API própria."
+  },
+
+  "ibs": {
+    "inicio_vigencia": 2027,
+    "percentual_implantacao_por_ano": {
+      "2027": 0.10,
+      "2028": 0.20,
+      "2029": 0.30,
+      "2030": 0.40,
+      "2031": 0.50,
+      "2032": 0.60,
+      "2033": 1.00
+    },
+    "apuracao": "mensal",
+    "observacao": "Este arquivo define apenas o percentual de implantação do IBS. A alíquota nominal é tratada em API própria."
+  },
+
+  "icms": {
+    "ativo_ate": 2032,
+    "extinto_a_partir_de": 2033,
+    "percentual_manutencao_por_ano": {
+      "2027": 1.00,
+      "2028": 1.00,
+      "2029": 0.90,
+      "2030": 0.80,
+      "2031": 0.70,
+      "2032": 0.60,
+      "2033": 0.00
+    },
+    "apuracao": "mensal",
+    "observacao": "O ICMS é progressivamente reduzido a partir de 2029 até sua eliminação total em 2033, conforme o regime de transição da Reforma Tributária"
+  },
+
+  "iss": {
+    "ativo_ate": 2032,
+    "extinto_a_partir_de": 2033,
+    "percentual_manutencao_por_ano": {
+      "2027": 1.00,
+      "2028": 1.00,
+      "2029": 0.90,
+      "2030": 0.80,
+      "2031": 0.70,
+      "2032": 0.60,
+      "2033": 0.00
+    },
+    "apuracao": "mensal",
+    "observacao": "O ISS é progressivamente reduzido a partir de 2029 até sua eliminação total em 2033, conforme o regime de transição da Reforma Tributária"
+  },
+
+  "ipi": {
+    "existe_juridicamente": true,
+    "aliquota_regra_geral": {
+      "ate_2026": "conforme legislacao_vigente",
+      "a_partir_de_2027": 0
+    },
+    "apuracao": "mensal",
+    "observacao": "A partir de 01/01/2027, o IPI passa a ter alíquota zero para a regra geral. Exceções legais específicas não são tratadas neste aplicativo."
+  },
+
+  "observacoes_gerais": [
+    "Durante o período de transição, tributos antigos e novos coexistem conforme os percentuais definidos",
+    "Este arquivo não define alíquotas nominais, apenas percentuais de convivência e vigência",
+    "Regras de cálculo, consolidação e apresentação são responsabilidade do aplicativo consumidor"
+  ],
+
+  "referencias_legais": [
+    {
+      "fonte": "Emenda Constitucional 132/2023",
+      "descricao": "Reforma do Sistema Tributário Nacional e instituição do IBS e da CBS"
+    },
+    {
+      "fonte": "Lei Complementar 214/2025",
+      "descricao": "Regulamentação do IBS, da CBS e do regime de transição"
+    }
+  ]
+}
