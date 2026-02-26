@@ -1,11 +1,11 @@
 {
   "api": "transicao_reforma",
 
-  "descricao": "Regras gerais da transição da Reforma Tributária brasileira, considerando a convivência entre tributos antigos e novos no período de 2027 a 2033, aplicadas sob a ótica da regra geral, sem exceções específicas por empresa",
+  "descricao": "Regras gerais da transição da Reforma Tributária brasileira conforme regra geral. CBS plena a partir de 2027. IBS inicia transição apenas em 2029 com crescimento de 10% ao ano até 2032, enquanto ICMS e ISS reduzem 10% ao ano no mesmo período.",
 
   "escopo": {
     "considera_beneficios_fiscais_especificos": false,
-    "descricao": "Este conjunto de regras considera exclusivamente a legislação geral aplicável à maioria das empresas, sem tratamento de regimes especiais, incentivos regionais ou exceções setoriais"
+    "descricao": "Aplicação da regra geral da transição, sem regimes especiais ou incentivos setoriais."
   },
 
   "pis_cofins": {
@@ -16,38 +16,39 @@
 
   "cbs": {
     "inicio_vigencia": 2027,
-    "percentual_implantacao_por_ano": {
-      "2027": 0.10,
-      "2028": 0.20,
-      "2029": 0.30,
-      "2030": 0.40,
-      "2031": 0.50,
-      "2032": 0.60,
+    "regra_transicao": false,
+    "implantacao": {
+      "2027": 1.00,
+      "2028": 1.00,
+      "2029": 1.00,
+      "2030": 1.00,
+      "2031": 1.00,
+      "2032": 1.00,
       "2033": 1.00
     },
     "apuracao": "mensal",
-    "observacao": "Este arquivo define apenas o percentual de implantação da CBS. A alíquota nominal é tratada em API própria."
+    "observacao": "A CBS é plena a partir de 2027 de forma não cumulativa. Não possui regra de transição percentual."
   },
 
   "ibs": {
-    "inicio_vigencia": 2027,
-    "percentual_implantacao_por_ano": {
-      "2027": 0.10,
-      "2028": 0.20,
-      "2029": 0.30,
-      "2030": 0.40,
-      "2031": 0.50,
-      "2032": 0.60,
+    "inicio_vigencia_transicao": 2029,
+    "percentual_aplicacao_sobre_aliquota_por_ano": {
+      "2027": 0.00,
+      "2028": 0.00,
+      "2029": 0.10,
+      "2030": 0.20,
+      "2031": 0.30,
+      "2032": 0.40,
       "2033": 1.00
     },
     "apuracao": "mensal",
-    "observacao": "Este arquivo define apenas o percentual de implantação do IBS. A alíquota nominal é tratada em API própria."
+    "observacao": "O percentual deve ser aplicado diretamente sobre a alíquota nominal informada pelo usuário na UI. Exemplo: 17,7% × 0,10 em 2029.Tributo não cumulativa"
   },
 
   "icms": {
     "ativo_ate": 2032,
     "extinto_a_partir_de": 2033,
-    "percentual_manutencao_por_ano": {
+    "percentual_aplicacao_sobre_aliquota_por_ano": {
       "2027": 1.00,
       "2028": 1.00,
       "2029": 0.90,
@@ -57,13 +58,13 @@
       "2033": 0.00
     },
     "apuracao": "mensal",
-    "observacao": "O ICMS é progressivamente reduzido a partir de 2029 até sua eliminação total em 2033, conforme o regime de transição da Reforma Tributária"
+    "observacao": "O percentual deve ser aplicado diretamente sobre a alíquota nominal do ICMS. Exemplo: 18% × 0,90 em 2029.Tributo não cumulativa"
   },
 
   "iss": {
     "ativo_ate": 2032,
     "extinto_a_partir_de": 2033,
-    "percentual_manutencao_por_ano": {
+    "percentual_aplicacao_sobre_aliquota_por_ano": {
       "2027": 1.00,
       "2028": 1.00,
       "2029": 0.90,
@@ -73,33 +74,33 @@
       "2033": 0.00
     },
     "apuracao": "mensal",
-    "observacao": "O ISS é progressivamente reduzido a partir de 2029 até sua eliminação total em 2033, conforme o regime de transição da Reforma Tributária"
+    "observacao": "O percentual deve ser aplicado diretamente sobre a alíquota nominal do ISS."
   },
 
   "ipi": {
     "existe_juridicamente": true,
     "aliquota_regra_geral": {
-      "ate_2026": "conforme legislacao_vigente",
+      "ate_2026": "conforme_legislacao_vigente",
       "a_partir_de_2027": 0
     },
-    "apuracao": "mensal",
-    "observacao": "A partir de 01/01/2027, o IPI passa a ter alíquota zero para a regra geral. Exceções legais específicas não são tratadas neste aplicativo."
+    "apuracao": "mensal"
   },
 
   "observacoes_gerais": [
-    "Durante o período de transição, tributos antigos e novos coexistem conforme os percentuais definidos",
-    "Este arquivo não define alíquotas nominais, apenas percentuais de convivência e vigência",
-    "Regras de cálculo, consolidação e apresentação são responsabilidade do aplicativo consumidor"
+    "IBS cresce 10% ao ano a partir de 2029 até 2032.",
+    "ICMS e ISS reduzem 10% ao ano no mesmo período.",
+    "Os percentuais devem ser aplicados diretamente sobre as alíquotas nominais.",
+    "CBS não possui transição percentual."
   ],
 
   "referencias_legais": [
     {
       "fonte": "Emenda Constitucional 132/2023",
-      "descricao": "Reforma do Sistema Tributário Nacional e instituição do IBS e da CBS"
+      "descricao": "Instituição do IBS e da CBS."
     },
     {
       "fonte": "Lei Complementar 214/2025",
-      "descricao": "Regulamentação do IBS, da CBS e do regime de transição"
+      "descricao": "Regulamentação do regime de transição."
     }
   ]
 }
